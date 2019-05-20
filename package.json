@@ -1,0 +1,73 @@
+{
+  "name": "@sealsc/web-extension-metamask",
+  "version": "0.1.0",
+  "description": "MetaMask extension wrapper which conform Seal-SC web extension protocol.",
+  "main": "src/extension.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SealSC/web-extension-metamask.git"
+  },
+  "keywords": [
+    "sealsc",
+    "blockchain",
+    "wallet",
+    "js",
+    "sdk",
+    "eth",
+    "ethereum",
+    "metamask",
+    "extension"
+  ],
+  "author": "Seal SC",
+  "license": "MIT",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "https://sealsc.com",
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "@babel/preset-env"
+          ]
+        }
+      ]
+    ]
+  },
+  "dependencies": {
+    "@sealsc/web-extension-protocol": "^0.1.0",
+    "is_js": "^0.9.0",
+    "web3": "^1.0.0-beta.55"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-proposal-decorators": "^7.4.4",
+    "@babel/plugin-proposal-do-expressions": "^7.2.0",
+    "@babel/plugin-proposal-export-default-from": "^7.2.0",
+    "@babel/plugin-proposal-export-namespace-from": "^7.2.0",
+    "@babel/plugin-proposal-function-bind": "^7.2.0",
+    "@babel/plugin-proposal-function-sent": "^7.2.0",
+    "@babel/plugin-proposal-json-strings": "^7.2.0",
+    "@babel/plugin-proposal-logical-assignment-operators": "^7.2.0",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.4.4",
+    "@babel/plugin-proposal-numeric-separator": "^7.2.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.2.0",
+    "@babel/plugin-proposal-pipeline-operator": "^7.3.2",
+    "@babel/plugin-proposal-throw-expressions": "^7.2.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-syntax-import-meta": "^7.2.0",
+    "@babel/plugin-transform-modules-umd": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/runtime": "^7.4.4",
+    "babelify": "^10.0.0",
+    "grunt": "^1.0.4",
+    "grunt-browserify": "^5.3.0",
+    "grunt-contrib-uglify-es": "^3.3.0",
+    "uglify-js": "^3.5.11"
+  }
+}
