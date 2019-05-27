@@ -17,7 +17,7 @@ import "@sealsc/web-extension-metamask"
 ```
 
 ### Documentation
-Coming soon.
+[Seal SC web extension metamask](https://sealsc.github.io/documents/en/web-extensions/metamask/)
 
 ### License
 The source is made available under the MIT license.
