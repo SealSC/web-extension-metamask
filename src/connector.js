@@ -7,13 +7,22 @@ class MetamaskConnector extends types.ExtensionConnector {
       return checkInstall
     }
 
-    let account = ethereum.selectedAddress
-    if(!account) {
-      ethereum.enable()
-      return new types.Result(null, consts.predefinedStatus.NOT_LOGIN(null))
+    if(!ethereum.enable) {
+      let accounts = await web3.eth.accounts
+      if (accounts.length === 0) {
+        return new types.Result(null, consts.predefinedStatus.NOT_LOGIN(null))
+      } else {
+        return new types.Result(accounts[0], consts.predefinedStatus.SUCCESS(null))
+      }
+    } else {
+      let account = ethereum.selectedAddress
+      if(!account) {
+        ethereum.enable()
+        return new types.Result(null, consts.predefinedStatus.NOT_LOGIN(null))
+      } else {
+        return new types.Result(null, consts.predefinedStatus.SUCCESS(null))
+      }
     }
-
-    return new types.Result(account, consts.predefinedStatus.SUCCESS(null))
   }
 }
 

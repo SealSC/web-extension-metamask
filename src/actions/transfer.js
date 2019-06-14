@@ -16,7 +16,10 @@ async function transfer(to, amount, memo, extra) {
 
   let gasSetting = buildGasSetting(extra)
   amount = web3.toWei(amount)
-  let data = web3.toHex(memo)
+  let data = undefined
+  if(memo) {
+    data = web3.toHex(memo)
+  }
 
   let accountResult = await this.extension.actions.getAccount()
   let account = accountResult.data

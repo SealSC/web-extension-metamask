@@ -7,11 +7,15 @@ const networkIdList = {
 
 class MetamaskChecker extends types.ExtensionChecker {
   async installed() {
-    if (Is.undefined(window.ethereum)) {
+    if (Is.undefined(window.ethereum) && Is.undefined(window.web3)) {
       return new types.Result(false, consts.predefinedStatus.NO_EXTENSION())
     }
 
-    return ethereum.isMetaMask ?
+    if(Is.undefined(window.ethereum)) {
+      window.ethereum = window.web3.currentProvider
+    }
+
+    return (ethereum.isMetaMask || ethereum.isImToken || ethereum.isTrust) ?
       new types.Result(true, consts.predefinedStatus.SUCCESS()) :
       new types.Result(false, consts.predefinedStatus.NOT_SPECIFIED_EXTENSION())
   }
@@ -30,9 +34,18 @@ class MetamaskChecker extends types.ExtensionChecker {
       return checkInstall
     }
 
-    return ethereum.selectedAddress ?
-      new types.Result(true, consts.predefinedStatus.SUCCESS()) :
-      new types.Result(false, consts.predefinedStatus.NOT_LOGIN())
+    if(!ethereum.enable) {
+      let accounts = await web3.eth.accounts
+      if (accounts.length === 0) {
+        return new types.Result(false, consts.predefinedStatus.NOT_LOGIN())
+      } else {
+        return new types.Result(true, consts.predefinedStatus.SUCCESS())
+      }
+    } else {
+      return ethereum.selectedAddress ?
+        new types.Result(true, consts.predefinedStatus.SUCCESS()) :
+        new types.Result(false, consts.predefinedStatus.NOT_LOGIN())
+    }
   }
 }
 
