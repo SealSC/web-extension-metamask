@@ -1,6 +1,6 @@
 {
   "name": "@sealsc/web-extension-metamask",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "MetaMask extension wrapper which conform Seal-SC web extension protocol.",
   "main": "src/extension.js",
   "repository": {
