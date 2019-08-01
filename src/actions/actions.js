@@ -28,7 +28,7 @@ class MetamaskActions extends types.ExtensionActions {
       return new types.Result(null, consts.predefinedStatus.NOT_SUPPORT())
     }
 
-    return await ownMethods[method](...args)
+    return await ownMethods[method].call(this, ...args)
   }
 }
 
