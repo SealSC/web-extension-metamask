@@ -3,6 +3,7 @@ import {transfer} from "./transfer";
 import {loadContract} from "./loadContract";
 import {transferToken} from "./transferToken";
 import {getAccount} from "./getAccount";
+import {getTransaction} from "./getTransaction";
 import ownMethods from "./ownMethods"
 import Is from "is_js"
 
@@ -21,6 +22,10 @@ class MetamaskActions extends types.ExtensionActions {
 
   async getAccount() {
     return await getAccount.call(this)
+  }
+
+  async getTransaction(txHash) {
+    return await getTransaction.call(this, txHash)
   }
 
   async invoke(method, ...args) {
