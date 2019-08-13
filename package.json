@@ -1,6 +1,6 @@
 {
   "name": "@sealsc/web-extension-metamask",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "MetaMask extension wrapper which conform Seal-SC web extension protocol.",
   "main": "src/extension.js",
   "repository": {
@@ -39,7 +39,8 @@
   "dependencies": {
     "@sealsc/web-extension-protocol": "^0.1.0",
     "is_js": "^0.9.0",
-    "web3": "^1.0.0-beta.55"
+    "web3": "^1.2.1",
+    "lodash": ">=4.17.13"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
@@ -55,7 +56,7 @@
     "@babel/plugin-proposal-logical-assignment-operators": "^7.2.0",
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.4.4",
     "@babel/plugin-proposal-numeric-separator": "^7.2.0",
-    "@babel/plugin-proposgal-optional-chaining": "^7.2.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.2.0",
     "@babel/plugin-proposal-pipeline-operator": "^7.3.2",
     "@babel/plugin-proposal-throw-expressions": "^7.2.0",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
@@ -68,6 +69,7 @@
     "grunt": "^1.0.4",
     "grunt-browserify": "^5.3.0",
     "grunt-contrib-uglify-es": "^3.3.0",
+    "lodash": ">=4.17.13",
     "uglify-js": "^3.5.11"
   }
 }

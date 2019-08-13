@@ -3,16 +3,17 @@ import {types, consts} from "@sealsc/web-extension-protocol";
 import {transactionResultGetter, buildGasSetting} from "./utils";
 import metamaskTypes from "./types";
 
-function getContractMethod(contract, methodName) {
-  let methodModel = contract.abiModel.getMethod(methodName)
-
-  if(!methodModel) {
+function getContractMethod(contract, methodName, param) {
+  let method = contract.methods[methodName]
+  if(!method) {
     return null
   }
 
+  let prop = method(...param)._method
+
   return {
-    model: methodModel,
-    func: contract.methods[methodName]
+    prop: prop,
+    func: method
   }
 }
 
@@ -27,7 +28,7 @@ class MetamaskContractCaller extends types.ExtensionContractCaller {
       param = []
     }
 
-    let method = getContractMethod(wrapper.contract, methodName)
+    let method = getContractMethod(wrapper.contract, methodName, param)
     if(!method) {
       return new types.Result(null, consts.predefinedStatus.BAD_PARAM(methodName))
     }
@@ -47,7 +48,7 @@ class MetamaskContractCaller extends types.ExtensionContractCaller {
       gas: gasSetting.gasLimit
     }
 
-    if(method.payable) {
+    if(method.prop.payable) {
       sendParam.value = web3.toWei(amount)
     }
 
@@ -69,7 +70,7 @@ class MetamaskContractCaller extends types.ExtensionContractCaller {
       param = []
     }
 
-    let method = getContractMethod(wrapper.contract, methodName)
+    let method = getContractMethod(wrapper.contract, methodName, param)
     if(!method) {
       return new types.Result(null, consts.predefinedStatus.BAD_PARAM(methodName))
     }
