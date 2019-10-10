@@ -37,6 +37,10 @@ async function transfer(to, amount, memo, extra) {
     try {
       web3Instance.eth.sendTransaction(transferParameters, (err, hash) => {
         transactionResultGetter(r, err, hash)
+      }).then(function(receipt){
+        if('function' === typeof extra.onReceipt) {
+          extra.onReceipt(receipt)
+        }
       }).catch(reason => {
         transactionResultGetter(r, reason, null)
       })

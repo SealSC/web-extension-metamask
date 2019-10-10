@@ -6,7 +6,7 @@ const defGasSetting = {
 }
 
 function buildGasSetting(setting) {
-  setting.gasPrice = setting.gasPrice ? web3.toWei(setting.gasPrice) : defGasSetting.price
+  setting.gasPrice = setting.gasPrice ? setting.gasPrice : defGasSetting.price
   setting.gasLimit = setting.gasLimit ? setting.gasLimit : defGasSetting.limit
 
   return setting

@@ -57,6 +57,11 @@ class MetamaskContractCaller extends types.ExtensionContractCaller {
         .send(sendParam, (err, tx) =>  {
           transactionResultGetter(rs, err, tx)
         })
+        .then(function(receipt){
+          if('function' === typeof extra.onReceipt) {
+            extra.onReceipt(receipt)
+          }
+        });
     })
   }
 
